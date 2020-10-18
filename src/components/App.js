@@ -1,15 +1,13 @@
 import React from 'react';
-
 import MovieList from './MovieList';
 import SearchBar from './SearchBar';
+import AddMovie from './AddMovie';
 import axios from 'axios';
 
 
 class App extends React.Component {
   state = {
-    movies: [
-
-    ],
+    movies: [],
     searchQuery: ""
   }
 
@@ -81,7 +79,10 @@ class App extends React.Component {
 
         <MovieList
           movies={filteredMovies}
-          deleteMovieProp={this.deleteMovie} />
+          deleteMovieProp={this.deleteMovie}
+        />
+
+        <AddMovie/>
       </div>
     )
   }
