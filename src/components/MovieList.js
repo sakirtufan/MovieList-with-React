@@ -6,7 +6,7 @@ const MovieList=(props) => {
   const truncateOverview = (string, maxLength) => {
     if(!string) return null;
     if(string.length <= maxLength)  return string;
-    return `${string.substring(0, maxLength)} ...`
+    return `${string.substring(0, maxLength)} ...`;
   }
    
     return (

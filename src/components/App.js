@@ -4,6 +4,7 @@ import SearchBar from './SearchBar';
 import AddMovie from './AddMovie';
 import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import EditMovie from './EditMovie';
 
 
 class App extends React.Component {
@@ -77,7 +78,8 @@ class App extends React.Component {
       (movie) => {
         return movie.name.toLowerCase().indexOf(this.state.searchQuery.toLowerCase()) !== -1
       }
-    ).sort((a,b)=>{return a.id < b.id ? 1 : -1});
+    ).sort((a,b)=>{return a.id < b.id ? 1 : a.id > b.id ? -1 :0});
+
     return (
       <Router>
         <div className='container'>
@@ -109,6 +111,10 @@ class App extends React.Component {
               />
 
             )}>
+            </Route>
+
+            <Route path="/edit/:id" component={EditMovie}>
+                
             </Route>
 
           </Switch>
