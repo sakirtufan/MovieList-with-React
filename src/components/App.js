@@ -25,6 +25,10 @@ class App extends React.Component {
 
   //AXIOS GET
   async componentDidMount() {
+    this.getMovies();
+  }
+
+  async getMovies() {
     const response = await axios.get("http://localhost:3002/movies");
     this.setState({ movies: response.data })
   }
@@ -60,7 +64,7 @@ class App extends React.Component {
 
   //SEARCH Movie
   searchMovie = (event) => {
-    this.setState({ searchQuery: event.target.value })
+    this.setState({ searchQuery: event.target.value })   
   }
 
   //AXIOS ADD Movie
@@ -69,7 +73,15 @@ class App extends React.Component {
 
     this.setState(state => ({
       movies: state.movies.concat(movie)
-    }))
+    }));
+
+    this.getMovies();
+  }
+
+  //AXIOS EDIT Movie
+  editMovie = async (id,updatedMovie) => {
+    await axios.put(`http://localhost:3002/movies/${id}`, updatedMovie);
+    this.getMovies();
   }
 
   render() {
@@ -78,7 +90,7 @@ class App extends React.Component {
       (movie) => {
         return movie.name.toLowerCase().indexOf(this.state.searchQuery.toLowerCase()) !== -1
       }
-    ).sort((a,b)=>{return a.id < b.id ? 1 : a.id > b.id ? -1 :0});
+    ).sort((a, b) => { return a.id < b.id ? 1 : a.id > b.id ? -1 : 0 });
 
     return (
       <Router>
@@ -103,7 +115,7 @@ class App extends React.Component {
             <Route path="/add" render={({ history }) => (
 
               <AddMovie
-                  onAddMovie={(movie) => {
+                onAddMovie={(movie) => {
                   this.addMovie(movie)
                   history.push("/")
                 }
@@ -113,8 +125,18 @@ class App extends React.Component {
             )}>
             </Route>
 
-            <Route path="/edit/:id" component={EditMovie}>
-                
+            <Route path="/edit/:id" render={(props) => (
+
+
+              <EditMovie
+                {...props}
+                onEditMovie={(id, movie) => {
+                  this.editMovie(id, movie)
+                }
+                }
+              />
+
+            )}>
             </Route>
 
           </Switch>

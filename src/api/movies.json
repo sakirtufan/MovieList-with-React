@@ -1,11 +1,11 @@
 {
   "movies": [
     {
-      "id": 1,
       "name": "The Flash",
-      "rating": 8.3,
+      "rating": "8.2",
       "overview": "Set in the 22nd century, The Matrix tells the story of a computer hacker who joins a group of underground insurgents fighting the vast and powerful computers who now rule the earth.",
-      "imageURL": "https://image.tmdb.org/t/p/w220_and_h330_face/wHa6KOJAoNTFLFtp7wguUJKSnju.jpg"
+      "imageURL": "https://image.tmdb.org/t/p/w220_and_h330_face/wHa6KOJAoNTFLFtp7wguUJKSnju.jpg",
+      "id": 1
     },
     {
       "id": 2,
@@ -44,16 +44,16 @@
     },
     {
       "name": "Die Simpsons",
-      "rating": "7.7",
-      "imageURL": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/vthlLjMfmL2qI6v4cnQau8YWuU9.jpg",
+      "rating": "7.6",
       "overview": "When a mafia accountant is taken hostage on his beat, a police officer – wracked by guilt from a prior stint as a negotiator – must negotiate the standoff, even as his own family is held captive by the mob.",
+      "imageURL": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/vthlLjMfmL2qI6v4cnQau8YWuU9.jpg",
       "id": 8
     },
     {
       "name": "The Walking Dead ",
-      "rating": "7.9",
-      "imageURL": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/AjfVMWgTOAhRxcQcEmVhu58AjPG.jpg",
+      "rating": "7.3",
       "overview": "The Walking Dead spielt bislang in der Metropolregion von Atlanta, im Südosten der Vereinigten Staaten, und erzählt vom Kampf einer kleinen Gruppe Überlebender nach einer weltweiten Zombie-Apokalypse. Unter Führung des Sheriffs Rick Grimes ist die Gruppe auf der Suche nach einer dauerhaften und vor allem sicheren Bleibe. Dabei stellen die fast überall präsenten Untoten eine permanent vorhandene Bedrohung dar, die jederzeit ohne Vorwarnung zuschlagen kann. Im Laufe der Zeit wird die Gruppe daher zwangsläufig immer kleiner, da manche Mitglieder den Zombies zum Opfer fallen, andere die Gruppe verlassen oder sich für den Tod entscheiden.\n\n",
+      "imageURL": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/AjfVMWgTOAhRxcQcEmVhu58AjPG.jpg",
       "id": 9
     }
   ]

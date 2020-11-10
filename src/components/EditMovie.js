@@ -10,6 +10,14 @@ class EditMovie extends React.Component {
     imageURL: ""
   }
 
+  onInputChange= (e) => {
+    //console.log(e.target.name);
+    //console.log(e.target.value);
+    this.setState({
+      [e.target.name] : e.target.value 
+    })
+  }
+
   async componentDidMount() {
     const id = this.props.match.params.id;
     const response = await Axios.get(`http://localhost:3002/movies/${id}`);
@@ -26,6 +34,18 @@ class EditMovie extends React.Component {
 
   handleFormSubmit = (e) => {
     e.preventDefault();
+
+    //get the values in the updated state
+    const { name, rating, overview ,imageURL } = this.state;
+
+    const id = this.props.match.params.id;
+
+    const updatedMovie = {
+      name,rating,overview,imageURL
+    }
+
+    this.props.onEditMovie(id,updatedMovie);
+    this.props.history.push('/');
   }
 
   render() {
@@ -39,7 +59,8 @@ class EditMovie extends React.Component {
               <input type="text"
                 className="form-control"
                 name="name"
-                value={this.state.name} />
+                value={this.state.name} 
+                onChange={this.onInputChange}/>
             </div>
             <div className="form-group col-md-2">
               <label htmlFor="inputRating">Rating</label>
@@ -47,7 +68,8 @@ class EditMovie extends React.Component {
                 type="text"
                 className="form-control"
                 name="rating"
-                value={this.state.rating}  />
+                value={this.state.rating} 
+                onChange={this.onInputChange} />
             </div>
           </div>
           <div className="form-row">
@@ -57,7 +79,8 @@ class EditMovie extends React.Component {
                 type="text"
                 className="form-control"
                 name="imageURL" 
-                value={this.state.imageURL} />
+                value={this.state.imageURL} 
+                onChange={this.onInputChange}/>
             </div>
           </div>
           <div className="form-row">
@@ -65,7 +88,7 @@ class EditMovie extends React.Component {
               <label htmlFor="overviewTextarea" >Overview</label>
               <textarea
                 className="form-control"
-                name="overview" rows="5" value={this.state.overview}></textarea>
+                name="overview" rows="5" value={this.state.overview} onChange={this.onInputChange}></textarea>
             </div>
           </div>
           <input type="submit" className="btn btn-danger btn-block" value="Edit Movie" />
